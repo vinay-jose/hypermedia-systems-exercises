@@ -1,7 +1,10 @@
 from flask import Flask, redirect, render_template, flash, request
 from models import Contact
 
+Contact.load_db()
 app = Flask(__name__)
+
+app.secret_key = b'just keep swimming'
 
 @app.get("/")
 def index():
@@ -29,8 +32,8 @@ def contacts_new_get():
 def contacts_new_post():
     c = Contact(
         None,
-        request.form['first_name'],
-        request.form['last_name'],
+        request.form['first'],
+        request.form['last'],
         request.form['phone'],
         request.form['email']
     )
@@ -42,15 +45,15 @@ def contacts_new_post():
     
 @app.get("/contacts/<contact_id>/edit")
 def contacts_edit_get(contact_id=0):
-    contact = Contact.find(contact_id=0)
+    contact = Contact.find(contact_id)
     return render_template("edit.html", contact=contact)
 
 @app.post("/contacts/<contact_id>/edit")
 def contacts_edit_post(contact_id=0):
     c = Contact.find(contact_id)
     c.update(
-        request.form['first_name'],
-        request.form['last_name'],
+        request.form['first'],
+        request.form['last'],
         request.form['phone'],
         request.form['email']
     )
@@ -68,4 +71,4 @@ def contacts_delete(contact_id=0):
     return redirect("/contacts")
         
 if __name__ == "__main__":
-    app.run(host="0.0.0.0", port="7860")
+    app.run(host="0.0.0.0", port="7860", debug=True)
