@@ -5,7 +5,7 @@
 <form action="/contacts" method="get" class="tool-bar">
     <label for="search">Search Term</label>
     <input id="search" type="search" name="q"
-        value="{{ requests.args.get('q') or '' }}"/>
+        value="{{ request.args.get('q') or '' }}"/>
     <input type="submit" value="Search"/>
 </form>
 <table>
