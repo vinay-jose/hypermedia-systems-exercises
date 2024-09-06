@@ -59,7 +59,7 @@ def contacts_edit_post(contact_id=0):
     )
     if c.save():
         flash("Updated Contact!")
-        return redirect(f"contacts/{str(contact_id)}")
+        return redirect(f"/contacts/{contact_id}")
     else:
         render_template("edit.html", contact=c)
         
