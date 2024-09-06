@@ -2,7 +2,7 @@
 
 {% block content %}
 
-<form>
+<form action="/contacts/{{ contact.id }}/edit" method="post">
     <fieldset>
         <legend>Contact Info</legend>
         <p>
