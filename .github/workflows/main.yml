@@ -3,7 +3,7 @@ name: Deploy to Hugging Face Spaces
 on:
   push:
     branches:
-      - 03-a-web-1.0-application
+      - '03-a-web-1.0-application'
 
 jobs:
   build:
